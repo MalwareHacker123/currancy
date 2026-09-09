@@ -17,9 +17,12 @@ class CurrencyConverter:
         amount_in_usd = amount / self.exchange_rates[from_currency]
         return amount_in_usd * self.exchange_rates[to_currency]
 
-# Usage
-cash = input("how much money do you want to convert")
-cashf = float(cash)
-f = input("What currency do you currently have. USD, EUR, GBP ,JPY, INR ")
-r = input("What currency do you want to have. USD, EUR, GBP, JPY, INR ")
-print(CurrencyConverter().convert(cashf, f, r))
+
+if __name__ == "__main__":
+    cash = input("how much money do you want to convert: ")
+    cashf = float(cash)
+    f = input("What currency do you currently have (USD, EUR, GBP, JPY, INR): ").strip().upper()
+    r = input("What currency do you want to have (USD, EUR, GBP, JPY, INR): ").strip().upper()
+    
+    result = CurrencyConverter().convert(cashf, f, r)
+    print(f"Converted amount: {result}")
