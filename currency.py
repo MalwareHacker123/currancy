@@ -9,11 +9,18 @@ class CurrencyConverter:
         }
 
     def convert(self, amount, from_currency, to_currency):
+        if amount <= 0:
+            raise ValueError("NO")
         if from_currency not in self.exchange_rates or to_currency not in self.exchange_rates:
-            raise ValueError("Invalid currency code provided.")
+            raise ValueError("Invalid currency provided stupid.")
             
         amount_in_usd = amount / self.exchange_rates[from_currency]
         return amount_in_usd * self.exchange_rates[to_currency]
+
+        return round(result, 2)
+
+    def add_rate(self, currency, rate):
+        self.exchange_rates[currency] = rate
 
 
 # Protect interactive prompts from running during pytest imports
